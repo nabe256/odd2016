@@ -7,42 +7,55 @@
     <link type="text/css" href="css/ski.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
     <script type="text/javascript">
-      $(function(){
-        $.getJSON('http://nabe256.github.io/odd2016/ski.json',function(data){
-          log.console(data.length);
+        $(function () {
+            $.getJSON('ski.json', function (json) {
+//                console.log(json[0].latitude);
+
+                for (var i=1 ; i<=json.length; i++) {
+                    var lat = json[i].latitude;
+                    var lon = json[i].longitude;
+                    console.log(lat);
+                    if (lat != null || lon != null) {
+                        $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&APPID=dc9fab0d757d848f8e5317a5348c7beb', function (data) {
+//                            console.log(data);
+                        });
+                    }
+
+                }
+            });
+
         });
-      });
     </script>
 </head>
 <body>
-    <div id="ski_info">
+<div id="ski_info">
     <table class="pure-table pure-table-horizontal" align="center" id="ski_table">
         <thead>
-            <tr>
-                <th>スキー場</th>
-                <th>前日の天気</th>
-                <th>本日の天気</th>
-                <th>気温</th>
-                <th>積雪量</th>
-            </tr>
+        <tr>
+            <th>スキー場</th>
+            <th>前日の天気</th>
+            <th>本日の天気</th>
+            <th>気温</th>
+            <th>積雪量</th>
+        </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>野沢温泉スキー場</td>
-                <td>雪</td>
-                <td>晴れ</td>
-                <td>５度</td>
-                <td>100cm</td>
-            </tr>
-            <tr>
-                <td>飯綱高原スキー場</td>
-                <td>雪</td>
-                <td>雪</td>
-                <td>-3度</td>
-                <td>80cm</td>
-            </tr>
+        <tr>
+            <td>野沢温泉スキー場</td>
+            <td>雪</td>
+            <td>晴れ</td>
+            <td>５度</td>
+            <td>100cm</td>
+        </tr>
+        <tr>
+            <td>飯綱高原スキー場</td>
+            <td>雪</td>
+            <td>雪</td>
+            <td>-3度</td>
+            <td>80cm</td>
+        </tr>
         </tbody>
     </table>
-    </div>
+</div>
 </body>
 </html>
