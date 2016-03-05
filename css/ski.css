@@ -1,0 +1,13 @@
+body{
+    background-image: url("/ski/image/winter-back.jpg");
+}
+th{
+    background: linear-gradient(#05FBFF, #1E00FF);
+    color: white;
+}
+tbody{
+    background-color: white;
+}
+#ski_table{
+    margin-top: 30px;
+}
